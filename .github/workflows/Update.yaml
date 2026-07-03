@@ -1,0 +1,28 @@
+name: Update Manifest
+on:
+  repository_dispatch:
+    types: [deploy]
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Manifest Repository
+        uses: actions/checkout@v4
+        with:
+          path: manifest-repo
+
+      - name: Update Manifest File
+        working-directory: manifest-repo
+        run: |
+          echo "Updating manifest with new image..."
+          sed -i "s|image: .*|image: ${{ github.event.client_payload.image }}|" deployment.yaml
+
+      - name: Commit and Push Changes
+        working-directory: manifest-repo
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update manifest with new image ${{ github.event.client_payload.image }}"
+          git push origin main
