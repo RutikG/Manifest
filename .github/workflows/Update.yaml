@@ -10,6 +10,8 @@ jobs:
       - name: Checkout Manifest Repository
         uses: actions/checkout@v4
         with:
+          repository: RutikG/Manifest
+          token: ${{ secrets.MAN_TOKEN }}
           path: manifest-repo
 
       - name: Update Manifest File
