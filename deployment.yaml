@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: e-2-e-container
-          image: 123
+          image: rutikg/forfun:2302dbbbe355a3cf2a47bce982aa76bc994fc5e3
           ports:
             - containerPort: 3000
