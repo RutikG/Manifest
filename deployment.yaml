@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-2-e-deployment
+  labels:
+    app: e-2-e
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: e-2-e
+  template:
+    metadata:
+      labels:
+        app: e-2-e
+    spec:
+      containers:
+        - name: e-2-e-container
+          image: 123
+          ports:
+            - containerPort: 3000
