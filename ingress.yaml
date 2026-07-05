@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: e-2-e-ingress
 spec:
+  ingressClassName: nginx
   rules:
     - host: e-2-e.rutik.com
       http:
